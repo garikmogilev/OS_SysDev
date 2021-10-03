@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/OS03_06.dir/main.cpp.o -o OS03_06 
