@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/GitHub/OS_SysDev/Lab3/OS03_01/main.cpp
+iostream
+-
+synchapi.h
+-
+Windows.h
+-
+
