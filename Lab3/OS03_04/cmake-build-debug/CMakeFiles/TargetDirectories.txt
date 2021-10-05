@@ -1,0 +1,3 @@
+/home/oracle/CLionProjects/OS03_04/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/oracle/CLionProjects/OS03_04/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/oracle/CLionProjects/OS03_04/cmake-build-debug/CMakeFiles/OS03_04.dir
