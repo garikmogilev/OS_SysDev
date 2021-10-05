@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/GitHub/OS_SysDev/Lab4/OS04_05/main.cpp
+iostream
+-
+windows.h
+D:/GitHub/OS_SysDev/Lab4/OS04_05/windows.h
+

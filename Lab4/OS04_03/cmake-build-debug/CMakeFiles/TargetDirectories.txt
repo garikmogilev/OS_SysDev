@@ -1,0 +1,3 @@
+D:/GitHub/OS_SysDev/Lab4/OS04_03/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/GitHub/OS_SysDev/Lab4/OS04_03/cmake-build-debug/CMakeFiles/OS04_03.dir
+D:/GitHub/OS_SysDev/Lab4/OS04_03/cmake-build-debug/CMakeFiles/edit_cache.dir
