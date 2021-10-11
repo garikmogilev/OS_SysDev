@@ -15,31 +15,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0700f3e3-4432-410d-8b77-8d64385a33f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/OS04_01.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_02/.idea/OS04_022.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_03/.idea/OS04_03.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_04/.idea/OS04_04.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_04/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_04/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_04/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_04/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_04/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_04/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/OS04_05.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_02/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_02/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_01/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_01/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_01/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_01/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_03/cmake-build-debug/CMakeFiles/OS03_03.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_03/cmake-build-debug/CMakeFiles/OS03_03.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_03/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_03/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_03/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_03/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_01/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_01/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_01/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_02/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_02/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_03/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_03/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_03/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_03/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_03/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_03/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_04/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_04/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_04/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_04/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_04/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_04/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,11 +70,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -100,6 +86,9 @@
       <updated>1633378269274</updated>
       <workItem from="1633378271395" duration="1092000" />
       <workItem from="1633410144194" duration="99000" />
+      <workItem from="1633416054921" duration="554000" />
+      <workItem from="1633418383056" duration="24000" />
+      <workItem from="1633528108764" duration="308000" />
     </task>
     <servers />
   </component>

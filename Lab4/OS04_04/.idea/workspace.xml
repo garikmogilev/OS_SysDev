@@ -15,31 +15,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c33a9de-3fe4-407c-bb68-a74e2e50b0ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/OS04_01.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_01/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_02/.idea/OS04_022.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_03/.idea/OS04_03.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/OS04_04.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_05/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_05/.idea/OS04_05.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_05/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_05/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_05/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_05/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_05/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../OS04_05/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_02/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_02/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_01/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_01/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_01/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_01/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_03/cmake-build-debug/CMakeFiles/OS03_03.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_03/cmake-build-debug/CMakeFiles/OS03_03.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_03/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_03/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/OS03_03/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/OS03_03/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_01/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_01/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_01/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_02/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_02/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_03/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_03/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_03/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_03/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_03/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_03/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_05/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_05/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OS04_05/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../OS04_05/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,12 +64,12 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="OS04_04" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OS04_04" TARGET_NAME="OS04_04" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="OS04_04" RUN_TARGET_NAME="OS04_04">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OS04_04" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OS04_04" TARGET_NAME="OS04_04" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="OS04_04" RUN_TARGET_NAME="OS04_04">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -99,6 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1633373978030</updated>
       <workItem from="1633373981150" duration="2650000" />
+      <workItem from="1633418348002" duration="32000" />
     </task>
     <servers />
   </component>
@@ -115,5 +106,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

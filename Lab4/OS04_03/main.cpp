@@ -42,7 +42,7 @@ int main() {
         std::cout << "main i: " << i << ", PID: " << pid << ", TID: " << tid << std::endl;
         Sleep(PAUSE);
     }
-    ResumeThread(hChild_2);
+    ResumeThread(hChild_2);w
 
     WaitForSingleObject(hChild_1, INFINITE);
     WaitForSingleObject(hChild_2, INFINITE);

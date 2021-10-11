@@ -13,8 +13,10 @@
 int main() {
     DWORD pid = GetCurrentProcessId();
     HANDLE snap = CreateToolhelp32Snapshot(TH32CS_SNAPALL,0);
+
     PROCESSENTRY32 peProcessEntry;
     peProcessEntry.dwSize = sizeof (PROCESSENTRY32);
+
     std::wcout << L"Current PID = " << pid << std::endl << L"-----------------------------------" << std::endl;
     try {
         if (!Process32First(snap, &peProcessEntry)) throw L"Process32First";
