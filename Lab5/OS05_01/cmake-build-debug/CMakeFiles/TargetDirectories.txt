@@ -1,0 +1,3 @@
+D:/GitHub/OS_SysDev/Lab5/OS05_01/cmake-build-debug/CMakeFiles/OS05_01.dir
+D:/GitHub/OS_SysDev/Lab5/OS05_01/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/GitHub/OS_SysDev/Lab5/OS05_01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
