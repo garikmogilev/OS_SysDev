@@ -1,0 +1,3 @@
+/home/oracle/OS_SysDev/Lab4/OS05_05/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/oracle/OS_SysDev/Lab4/OS05_05/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/oracle/OS_SysDev/Lab4/OS05_05/cmake-build-debug/CMakeFiles/OS05_05.dir
