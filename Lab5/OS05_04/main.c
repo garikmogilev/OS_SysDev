@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
     printf("pid: %d\n", pid);
     printf("tid: %d\n", tid);
-    printf("current priority = %d\n", getpriority(PRIO_PROCESS,0));
+    printf("current priority = %d\n", nice(0));
 
     cpu_set_t set;
     CPU_ZERO(&set);

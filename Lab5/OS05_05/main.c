@@ -4,9 +4,9 @@
 
 int main(int argc, char **argv)
 {
-    nice(-20);
     for(int i = 0; i < COUNT; i++)
     {
-        printf("%d\n", getpid());
+        printf("pid: %d priority: %d\n", getpid(), nice(0));
+        sleep(1);
     }
 }
