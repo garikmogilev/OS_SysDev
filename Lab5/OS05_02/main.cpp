@@ -1,16 +1,6 @@
 #include <iostream>
-#include <synchapi.h>
 #include "windows.h"
-#include <dirent.h>
 #include <bitset>
-
-std::string current_working_directory()
-{
-    char* cwd = _getcwd(nullptr, 0 ) ;
-    std::string working_directory(cwd) ;
-    std::free(cwd) ;
-    return working_directory ;
-}
 
 int main(int argc, char* argv[]) {
     DWORD mask;
@@ -33,13 +23,12 @@ int main(int argc, char* argv[]) {
 
     }
 
-    std::string path = current_working_directory();
 
-    std::string  OS05_02_1_str = path + "\\OS05_02x.exe";
-    std::string  OS05_02_2_str = path + "\\OS05_02x.exe";
+    std::wstring  OS05_02_1_str =  L"D:\\GitHub\\OS_SysDev\\Lab5\\Visual Studio\\Lab 5\\Debug\\OS05_02x.exe";
+    std::wstring  OS05_02_2_str =  L"D:\\GitHub\\OS_SysDev\\Lab5\\Visual Studio\\Lab 5\\Debug\\OS05_02x.exe";
 
-    LPCSTR OS05_02_1 = OS05_02_1_str.c_str();
-    LPCSTR OS05_02_2 = OS05_02_2_str.c_str();
+    LPCWSTR OS05_02_1 = OS05_02_1_str.c_str();
+    LPCWSTR OS05_02_2 = OS05_02_2_str.c_str();
 
     STARTUPINFO cif1;
     STARTUPINFO cif2;
