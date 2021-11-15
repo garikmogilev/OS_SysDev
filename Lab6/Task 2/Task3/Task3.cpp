@@ -30,7 +30,7 @@ int main()
         arrayint++;
     }
 
-    // С И А      С = D1; И = C8; A = C0;
+    // F V Y      F = D1; V = C8; Y = C0;
 
     int page = 0xD1;
     int offset = 0xC8C;

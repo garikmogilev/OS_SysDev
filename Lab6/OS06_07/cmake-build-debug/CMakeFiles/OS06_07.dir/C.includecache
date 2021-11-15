@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/oracle/OS_SysDev/Lab6/OS06_07/main.c
+stdio.h
+-
+stdlib.h
+-
+sys/types.h
+-
+unistd.h
+-
+
