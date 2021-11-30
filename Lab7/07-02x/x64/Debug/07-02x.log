@@ -1,0 +1,3 @@
+﻿  07-02x.cpp
+D:\GitHub\OS_SysDev\Lab7\07-02x\07-02x.cpp(7,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  07-02x.vcxproj -> D:\GitHub\OS_SysDev\Lab7\x64\Debug\07-02x.exe
