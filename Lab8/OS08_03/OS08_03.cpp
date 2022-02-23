@@ -40,7 +40,7 @@ DWORD WINAPI ChildThread()
 
 int main()
 {
-    long long it = - 0 * SECOND;
+    long long it = - 0 * 10000000;
     DWORD ChildId = 0;
     HANDLE hChild = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ChildThread, NULL, NULL, &ChildId);
     timer = CreateWaitableTimer(NULL, FALSE, NULL);

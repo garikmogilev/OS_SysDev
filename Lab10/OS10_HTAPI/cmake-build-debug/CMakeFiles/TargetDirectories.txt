@@ -1,0 +1,3 @@
+D:/GitHub/OS_SysDev/Lab10/OS10_HTAPI/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/GitHub/OS_SysDev/Lab10/OS10_HTAPI/cmake-build-debug/CMakeFiles/OS10_HTAPI.dir
+D:/GitHub/OS_SysDev/Lab10/OS10_HTAPI/cmake-build-debug/CMakeFiles/edit_cache.dir

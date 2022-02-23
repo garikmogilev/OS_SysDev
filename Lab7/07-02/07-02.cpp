@@ -61,8 +61,8 @@ void main()
 
 	CriticalLoop("Main");
 
-	WaitForSingleObject(hChildA, INFINITE);
-	CloseHandle(hChildA);
+	//WaitForSingleObject(hChildA, INFINITE);
+	//CloseHandle(hChildA);
 	WaitForSingleObject(hChildB, INFINITE);
 	CloseHandle(hChildB);
 
