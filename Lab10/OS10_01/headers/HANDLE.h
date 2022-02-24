@@ -3,9 +3,6 @@
 //
 #pragma once
 #include "windows.h"
-
-#define SUCCESS 1
-#define FAILURE 0
 #define MAX_SIZE_ERROR 512
 
 namespace HT {
@@ -70,10 +67,11 @@ namespace HT {
     [[nodiscard]]
     unsigned int HashNext(unsigned int hash,unsigned int size,unsigned int i);
 
-    void Print(HTHANDLE *);
+    void PrintAll(HTHANDLE *);
+    void Print(void *);
     [[nodiscard]]
     BOOL Close(HTHANDLE *);
-    void GetLastError(HTHANDLE *);
+    const char *  GetLastError(HTHANDLE *);
     [[nodiscard]]
     DWORD WINAPI SnapThread(HTHANDLE *);
 }

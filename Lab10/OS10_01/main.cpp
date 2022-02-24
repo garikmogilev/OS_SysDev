@@ -7,61 +7,108 @@
 #include <list>
 #include "headers/HANDLE.h"
 #include "headers/CRUD.h"
+#define SIZE_TEMP 128
+#define METHOD_OPEN_FILE
 
 int main(int argc, char *argv[]) {
     const CHAR *fileName = "../resources/test2.th";
-    HT::HTHANDLE * hthandle;
+    HT::HTHANDLE * hthandle = nullptr;
+    BOOL test;
+    char name[] = "test";
+    char temp[SIZE_TEMP];
 
     try {
+#ifdef METHOD_OPEN_FILE
+        /// create file mapping *****************************
         hthandle = HT::Create(48, 3, 10, 10, fileName);
-        //hthandle = HT::Open( fileName);
-    if(hthandle == nullptr)
-        throw "Chto-to poshlo ne tak";
 
-    HT::Insert(hthandle, new HT::Element("1123", 4, "TEST1", 5));
-    HT::Insert(hthandle, new HT::Element("1232", 4, "TEST2", 5));
-    HT::Insert(hthandle, new HT::Element("3sda", 4, "TEST3", 5));
-    HT::Insert(hthandle, new HT::Element("4zxc", 4, "TEST4", 5));
-    HT::Insert(hthandle, new HT::Element("5qe5", 4, "TEST5", 5));
-    HT::Insert(hthandle, new HT::Element("6zxe", 4, "TEST6", 5));
-    HT::Insert(hthandle, new HT::Element("7asd", 4, "TEST7", 5));
-    HT::Insert(hthandle, new HT::Element("asd8", 4, "TEST8", 5));
-    HT::Insert(hthandle, new HT::Element("9asd", 4, "TEST9", 5));
-    HT::Insert(hthandle, new HT::Element("1bn0", 4, "TEST10", 6));
-    HT::Insert(hthandle, new HT::Element("1vb1", 4, "TEST11", 6));
-    HT::Insert(hthandle, new HT::Element("0909", 4, "TEST12", 6));
-    HT::Insert(hthandle, new HT::Element("jjkk", 4, "TEST13", 6));
-    HT::Insert(hthandle, new HT::Element("jjkk", 4, "TEST14", 6));
+        if(hthandle == nullptr)
+            throw std::runtime_error("Error create mapping");
+        else
+            std::cout << "Create success" << std::endl;
+        /// *************************************************
+#endif
+#ifndef METHOD_OPEN_FILE
+        /// open file mapping ******************************
+        hthandle = HT::Open( fileName);
 
+        if(hthandle == nullptr)
+            throw std::runtime_error("Error open mapping");
+        else
+            std::cout << "Open success" << std::endl;
+        /// *************************************************
+#endif
+        /// insert Element **********************************
+        for (int i = 1; i < 12; i++) {
+            memset(temp, 0, SIZE_TEMP);
+            strcat(temp, name);
+            strcat(temp, std::to_string(i).c_str());
 
+            test = HT::Insert(hthandle, new HT::Element(
+                    std::to_string(i).c_str(),
+                    (int)strlen(std::to_string(i).c_str()),
+                    temp,
+                    (int) strlen(temp)
+            ));
 
-        auto element = HT::Get(hthandle, new HT::Element("jjkk", 4));
-        if(element) std::cout << "!!!!!!!!!FOUND GET!!!!!!!!!!!!!!!!\n";
-        else std::cout << "!!!!!!!!!NOT FOUND GET!!!!!!!!!!!!!!!!\n";
+            if(test == false)
+                throw std::runtime_error("Error");
+            else
+                std::cout << "Element inserted" << std::endl;
+        }
+        /// *************************************************
 
-        if (element != nullptr) {
-            std::cout << element->keyLength << std::endl;
-            std::cout << element->payloadLength << std::endl;
-            std::cout << (char *) element->key << std::endl;
-            std::cout << (char *) element->payload << std::endl;
+        /// get Element *************************************
+        auto element = HT::Get(hthandle, new HT::Element("1", 1));
+
+        if(element == nullptr)
+            std::cout << "Element not found" << std::endl;
+        else {
+            std::cout << "Element found" << std::endl;
+            Print(element);
         }
 
-        HT::Print(hthandle);
-        //std::cout << HT::Snap(hthandle);
-        Sleep(5000);
-        //HT::Insert(hthandle, new HT::Element("nnnn", 4, "TEST16", 6));
-        BOOL res = HT::Update(hthandle, new HT::Element("jjkk", 4, "TEST19", 6));
+        element = HT::Get(hthandle, new HT::Element("a", 1));
 
-        if(res) std::cout << "!!!!!!!!!FOUND UPDATE!!!!!!!!!!!!!!!!\n";
-        else std::cout << "!!!!!!!!!NOT FOUND UPDATE!!!!!!!!!!!!!!!!\n";
-        HT::Print(hthandle);
-        HT::Close(hthandle);
+        if(element == nullptr)
+            std::cout << "Element not found" << std::endl;
+        else {
+            std::cout << "Element found" << std::endl;
+            Print(element);
+        }
+        /// *************************************************
+
+        /// update Element **********************************
+        test = HT::Update(hthandle, new HT::Element("2", 1, "TEST_1234", 9));
+
+        if(test == FALSE)
+            throw std::runtime_error("Element not updated");
+        else {
+            std::cout << "Element updated" << std::endl;
+        }
+
+        HT::PrintAll(hthandle);
+
+        /// close file mapping *****************************
+        test = HT::Close(hthandle);
+        if(test == FALSE)
+            throw std::runtime_error("Error close mapping");
+        else
+            std::cout << "Close success" << std::endl;
+        /// ************************************************
 
 
-    }catch(const char * error)
-    {
-        std::cerr << error << std::endl;
     }
+    catch(std::runtime_error &error)
+    {
+        std::cerr << "runtime_error: " << error.what() << std::endl;
+        std::cerr << HT::GetLastError(hthandle) << std::endl;
+        if(test == FALSE)
+            throw std::runtime_error("Error close mapping");
+        else
+            std::cout << "Close success" << std::endl;
+    }
+}
 
 /*
     std::cout << "DEL" << std::endl;
@@ -74,4 +121,3 @@ int main(int argc, char *argv[]) {
 */
 
     //UnmapViewOfFile(hthandle->shared);
-}

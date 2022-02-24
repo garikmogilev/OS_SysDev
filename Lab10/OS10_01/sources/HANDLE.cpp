@@ -56,7 +56,7 @@ namespace HT {
     }
 
     int HTHANDLE::AlignmentMemory(int sizeElement, int maxKeyLength, int maxPayLoadLength) {
-        int size = sizeElement + maxKeyLength + maxPayLoadLength;
+        int size = sizeElement + (maxKeyLength + 1) + (maxPayLoadLength + 1) ; // +1 for '/0'
         if (size % 4 == 0)
             return size;
         else {
@@ -67,8 +67,8 @@ namespace HT {
     HTHANDLE * Create(int capacity, int secSnapshotInterval, int maxKeyLength, int maxPayLoadLength, const char *fileName) {
         HTHANDLE * hthandle;
         int sizeMap =
-                (HT::HTHANDLE::AlignmentMemory(sizeof(Element), maxKeyLength, maxPayLoadLength)) * capacity +
-                sizeof(BetweenProcessMemory);
+                (HT::HTHANDLE::AlignmentMemory((int)sizeof(Element), maxKeyLength, maxPayLoadLength)) * capacity +
+                        (int)sizeof(BetweenProcessMemory);
         std::cout << "Map size: " << sizeMap << std::endl;
 
         try {
@@ -106,6 +106,7 @@ namespace HT {
             if (map == nullptr)
                 throw std::runtime_error("Mapping create failed");
 
+            ZeroMemory((int*)map, 48*48 +  (int)sizeof(BetweenProcessMemory));
             auto * shared = (BetweenProcessMemory*)map;
             hthandle = new HTHANDLE(capacity, secSnapshotInterval, maxKeyLength, maxPayLoadLength, fileName);
             * shared = * hthandle->shared;
@@ -115,6 +116,8 @@ namespace HT {
             hthandle->fileMapping = fileMapping;
             hthandle->address = (char*)map + sizeof(BetweenProcessMemory);
             hthandle->mutex = CreateMutex(nullptr, FALSE, "OS10");
+            hthandle->threadSnap.handle = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE) SnapThread, hthandle, 0,
+                                                       &hthandle->threadSnap.ID);
 
         } catch (const std::runtime_error & err) {
             std::cerr << "Error: " << err.what() << std::endl;
@@ -135,7 +138,7 @@ namespace HT {
                     GENERIC_WRITE | GENERIC_READ,
                     0,
                     nullptr,
-                    OPEN_EXISTING,
+                    OPEN_ALWAYS,
                     FILE_ATTRIBUTE_NORMAL,
                     nullptr
             );
@@ -227,17 +230,16 @@ namespace HT {
         hthandle->exit = true;  // variable for exit thread for snap
         WaitForSingleObject( hthandle->threadSnap.handle, INFINITE);
 
-        if(!CloseHandle( hthandle->file)){
+        if(!CloseHandle(hthandle->file)){
             strcpy(hthandle->lastErrorMessage, (char *)  "Error close handle file");
             return FALSE;
         }
-        if(!CloseHandle( hthandle->fileMapping)){
+        if(!CloseHandle(hthandle->fileMapping)){
             strcpy(hthandle->lastErrorMessage, (char *)  "Error close handle mapping");
             return FALSE;
         }
         if(!CloseHandle( hthandle->threadSnap.handle)){
             strcpy(hthandle->lastErrorMessage, (char *)  "Error close handle thread");
-            return FALSE;
         }
 
         if(!CloseHandle(hthandle->mutex)) {
@@ -259,7 +261,17 @@ namespace HT {
         return (hash + 5 * i + 3 * i * i) % size;
     }
 
-    void Print(HTHANDLE *hthandle) {
+    void Print(void * elem){
+        if(elem == nullptr)   std::cout << "Print -> element -> nullptr" << std::endl;
+        auto element = (Element *)elem;
+
+        std::cout << "------- ELEMENT -------" << std::endl;
+        std::cout << "Key: " << (char *) element->key << std::endl;
+        std::cout << "Value: " << (char *) element->payload << std::endl;
+        std::cout << "-----------------------" << std::endl;
+    }
+
+    void PrintAll(HTHANDLE *hthandle) {
 
         std::cout.setf(std::ios::left);
         std::cout.width(hthandle->shared->maxKeyLength);
@@ -283,8 +295,8 @@ namespace HT {
         }
     }
 
-    void GetLastError(HTHANDLE * hthandle) {
-        std::cerr << hthandle->lastErrorMessage << std::endl;
+    const char *  GetLastError(HTHANDLE * hthandle) {
+        return hthandle->lastErrorMessage;
     }
 
     BOOL Snap(HTHANDLE * hthandle) {

@@ -42,11 +42,6 @@ namespace HT {
     }
 
     BetweenProcessMemory::BetweenProcessMemory(){
-        this->currentCapacity = 0;
-        this->sizeElement = 0;
-        this->capacity = 0;
-        this->maxKeyLength = 0;
-        this->maxPayLoadLength = 0;
         this->secSnapshotInterval = DEFAULT_SNAP_TIME;
     }
 
@@ -61,7 +56,7 @@ namespace HT {
     }
 
     int HTHANDLE::AlignmentMemory(int sizeElement, int maxKeyLength, int maxPayLoadLength) {
-        int size = sizeElement + maxKeyLength + maxPayLoadLength;
+        int size = sizeElement + (maxKeyLength + 1) + (maxPayLoadLength + 1) ; // +1 for '/0'
         if (size % 4 == 0)
             return size;
         else {
@@ -71,9 +66,9 @@ namespace HT {
 
     HTHANDLE * Create(int capacity, int secSnapshotInterval, int maxKeyLength, int maxPayLoadLength, const char *fileName) {
         HTHANDLE * hthandle;
-        unsigned int sizeMap =
-                (HT::HTHANDLE::AlignmentMemory(sizeof(Element), maxKeyLength, maxPayLoadLength)) * capacity +
-                sizeof(BetweenProcessMemory);
+        int sizeMap =
+                (HT::HTHANDLE::AlignmentMemory((int)sizeof(Element), maxKeyLength, maxPayLoadLength)) * capacity +
+                        (int)sizeof(BetweenProcessMemory);
         std::cout << "Map size: " << sizeMap << std::endl;
 
         try {
@@ -111,11 +106,18 @@ namespace HT {
             if (map == nullptr)
                 throw std::runtime_error("Mapping create failed");
 
-            auto * shared = new(map) BetweenProcessMemory();
+            ZeroMemory((int*)map, 48*48 +  (int)sizeof(BetweenProcessMemory));
+            auto * shared = (BetweenProcessMemory*)map;
             hthandle = new HTHANDLE(capacity, secSnapshotInterval, maxKeyLength, maxPayLoadLength, fileName);
-            *shared = *hthandle->shared;
+            * shared = * hthandle->shared;
+            hthandle->shared = shared;
+            hthandle->shared->sizeMap = sizeMap;
+            hthandle->file = file;
+            hthandle->fileMapping = fileMapping;
             hthandle->address = (char*)map + sizeof(BetweenProcessMemory);
-            hthandle->mutex = CreateMutex(nullptr, FALSE, fileName);
+            hthandle->mutex = CreateMutex(nullptr, FALSE, "OS10");
+            hthandle->threadSnap.handle = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE) SnapThread, hthandle, 0,
+                                                       &hthandle->threadSnap.ID);
 
         } catch (const std::runtime_error & err) {
             std::cerr << "Error: " << err.what() << std::endl;
@@ -129,7 +131,6 @@ namespace HT {
         BetweenProcessMemory * shared{};
         HANDLE fileMapping{};
         LPVOID map{};
-        int sizeMap{};
 
         try{
             HANDLE file = CreateFile(
@@ -137,7 +138,7 @@ namespace HT {
                     GENERIC_WRITE | GENERIC_READ,
                     0,
                     nullptr,
-                    OPEN_EXISTING,
+                    OPEN_ALWAYS,
                     FILE_ATTRIBUTE_NORMAL,
                     nullptr
             );
@@ -173,7 +174,6 @@ namespace HT {
                     throw std::runtime_error("Open -> Capacity is 0");
 
                 hthandle->shared = shared;
-                sizeMap = hthandle->shared->capacity * hthandle->shared->sizeElement + (int)sizeof(BetweenProcessMemory);
             }
 
             fileMapping = CreateFileMapping(
@@ -181,7 +181,7 @@ namespace HT {
                     nullptr,
                     PAGE_READWRITE,
                     0,
-                    sizeMap,
+                    hthandle->shared->sizeMap,
                     fileName
             );
 
@@ -205,7 +205,7 @@ namespace HT {
 
             hthandle->shared = shared;
             hthandle->address = (char *) map + sizeof(BetweenProcessMemory);
-            hthandle->mutex = CreateMutex(nullptr, FALSE, fileName);
+            hthandle->mutex = CreateMutex(nullptr, FALSE, "OS10");
             hthandle->threadSnap.handle = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE) SnapThread, hthandle, 0,
                                                        &hthandle->threadSnap.ID);
             hthandle->PrintCurrentSize();
@@ -217,9 +217,11 @@ namespace HT {
     }
 
     BOOL Close(HTHANDLE * hthandle){
-        if (!FlushViewOfFile(hthandle->shared, (hthandle->shared->sizeElement * hthandle->shared->capacity
-                + sizeof(BetweenProcessMemory))))
+        hthandle->exit = true;  // variable for exit thread for snap
+        hthandle->fixed = true;  // don't need to do snapshot, to fix the file
+        if (!FlushViewOfFile(hthandle->shared, hthandle->shared->sizeMap))
         {
+            throw std::runtime_error("Close -> FlushViewOfFile -> error");
             strcpy(hthandle->lastErrorMessage, (char *) "Element not found");
             return FALSE;
         }
@@ -228,20 +230,20 @@ namespace HT {
         hthandle->exit = true;  // variable for exit thread for snap
         WaitForSingleObject( hthandle->threadSnap.handle, INFINITE);
 
-        if(!CloseHandle( hthandle->mutex)) {
-            strcpy(hthandle->lastErrorMessage, (char *) "Error close handle mutex");
-            return FALSE;
-        }
-        if(!CloseHandle( hthandle->fileMapping)){
-            strcpy(hthandle->lastErrorMessage, (char *)  "Error close handle fileMapping");
-            return FALSE;
-        }
-        if(!CloseHandle( hthandle->file)){
+        if(!CloseHandle(hthandle->file)){
             strcpy(hthandle->lastErrorMessage, (char *)  "Error close handle file");
+            return FALSE;
+        }
+        if(!CloseHandle(hthandle->fileMapping)){
+            strcpy(hthandle->lastErrorMessage, (char *)  "Error close handle mapping");
             return FALSE;
         }
         if(!CloseHandle( hthandle->threadSnap.handle)){
             strcpy(hthandle->lastErrorMessage, (char *)  "Error close handle thread");
+        }
+
+        if(!CloseHandle(hthandle->mutex)) {
+            strcpy(hthandle->lastErrorMessage, (char *) "Error close handle mutex");
             return FALSE;
         }
 
@@ -259,7 +261,17 @@ namespace HT {
         return (hash + 5 * i + 3 * i * i) % size;
     }
 
-    void Print(HTHANDLE *hthandle) {
+    void Print(void * elem){
+        if(elem == nullptr)   std::cout << "Print -> element -> nullptr" << std::endl;
+        auto element = (Element *)elem;
+
+        std::cout << "------- ELEMENT -------" << std::endl;
+        std::cout << "Key: " << (char *) element->key << std::endl;
+        std::cout << "Value: " << (char *) element->payload << std::endl;
+        std::cout << "-----------------------" << std::endl;
+    }
+
+    void PrintAll(HTHANDLE *hthandle) {
 
         std::cout.setf(std::ios::left);
         std::cout.width(hthandle->shared->maxKeyLength);
@@ -270,7 +282,7 @@ namespace HT {
 
         for (int i = 0; i < hthandle->shared->capacity; i++) {
             auto offset = hthandle->Offset(i);
-            auto *element = (Element *) hthandle->Offset(i);;
+            auto *element = (Element *) hthandle->Offset(i);
 
             if (((Element *) (offset))->key != nullptr) {
                 element->PointerCorrecting(hthandle->shared->maxKeyLength);
@@ -283,8 +295,8 @@ namespace HT {
         }
     }
 
-    void GetLastError(HTHANDLE * hthandle) {
-        std::cerr << hthandle->lastErrorMessage << std::endl;
+    const char *  GetLastError(HTHANDLE * hthandle) {
+        return hthandle->lastErrorMessage;
     }
 
     BOOL Snap(HTHANDLE * hthandle) {
