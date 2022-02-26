@@ -3,4 +3,4 @@ project(OS10_STATIC)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(OS10_STATIC HANDLE.cpp Element.cpp CRUD.cpp)
+add_library(OS10_STATIC sources/HANDLE.cpp sources/Element.cpp sources/CRUD.cpp)

@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: OS10_STATIC
+# Project: OS11_HTAPI
 # Configurations: Debug
 # =============================================================================
 
@@ -39,56 +39,69 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = D$:/GitHub/OS_SysDev/Lab10/OS10_STATIC/cmake-build-debug/
+cmake_ninja_workdir = D$:/GitHub/OS_SysDev/Lab11/OS11_HTAPI/cmake-build-debug/
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target OS10_STATIC
+# Object build statements for SHARED_LIBRARY target OS11_HTAPI
 
 
 #############################################
-# Order-only phony target for OS10_STATIC
+# Order-only phony target for OS11_HTAPI
 
-build cmake_object_order_depends_target_OS10_STATIC: phony || CMakeFiles/OS10_STATIC.dir
+build cmake_object_order_depends_target_OS11_HTAPI: phony || CMakeFiles/OS11_HTAPI.dir
 
-build CMakeFiles/OS10_STATIC.dir/sources/HANDLE.cpp.obj: CXX_COMPILER__OS10_STATIC_Debug D$:/GitHub/OS_SysDev/Lab10/OS10_STATIC/sources/HANDLE.cpp || cmake_object_order_depends_target_OS10_STATIC
-  DEP_FILE = CMakeFiles\OS10_STATIC.dir\sources\HANDLE.cpp.obj.d
+build CMakeFiles/OS11_HTAPI.dir/main.cpp.obj: CXX_COMPILER__OS11_HTAPI_Debug D$:/GitHub/OS_SysDev/Lab11/OS11_HTAPI/main.cpp || cmake_object_order_depends_target_OS11_HTAPI
+  DEFINES = -DOS11_HTAPI_EXPORTS
+  DEP_FILE = CMakeFiles\OS11_HTAPI.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++17
-  OBJECT_DIR = CMakeFiles\OS10_STATIC.dir
-  OBJECT_FILE_DIR = CMakeFiles\OS10_STATIC.dir\sources
+  OBJECT_DIR = CMakeFiles\OS11_HTAPI.dir
+  OBJECT_FILE_DIR = CMakeFiles\OS11_HTAPI.dir
 
-build CMakeFiles/OS10_STATIC.dir/sources/Element.cpp.obj: CXX_COMPILER__OS10_STATIC_Debug D$:/GitHub/OS_SysDev/Lab10/OS10_STATIC/sources/Element.cpp || cmake_object_order_depends_target_OS10_STATIC
-  DEP_FILE = CMakeFiles\OS10_STATIC.dir\sources\Element.cpp.obj.d
+build CMakeFiles/OS11_HTAPI.dir/sources/CRUD.cpp.obj: CXX_COMPILER__OS11_HTAPI_Debug D$:/GitHub/OS_SysDev/Lab11/OS11_HTAPI/sources/CRUD.cpp || cmake_object_order_depends_target_OS11_HTAPI
+  DEFINES = -DOS11_HTAPI_EXPORTS
+  DEP_FILE = CMakeFiles\OS11_HTAPI.dir\sources\CRUD.cpp.obj.d
   FLAGS = -g -std=gnu++17
-  OBJECT_DIR = CMakeFiles\OS10_STATIC.dir
-  OBJECT_FILE_DIR = CMakeFiles\OS10_STATIC.dir\sources
+  OBJECT_DIR = CMakeFiles\OS11_HTAPI.dir
+  OBJECT_FILE_DIR = CMakeFiles\OS11_HTAPI.dir\sources
 
-build CMakeFiles/OS10_STATIC.dir/sources/CRUD.cpp.obj: CXX_COMPILER__OS10_STATIC_Debug D$:/GitHub/OS_SysDev/Lab10/OS10_STATIC/sources/CRUD.cpp || cmake_object_order_depends_target_OS10_STATIC
-  DEP_FILE = CMakeFiles\OS10_STATIC.dir\sources\CRUD.cpp.obj.d
+build CMakeFiles/OS11_HTAPI.dir/sources/Element.cpp.obj: CXX_COMPILER__OS11_HTAPI_Debug D$:/GitHub/OS_SysDev/Lab11/OS11_HTAPI/sources/Element.cpp || cmake_object_order_depends_target_OS11_HTAPI
+  DEFINES = -DOS11_HTAPI_EXPORTS
+  DEP_FILE = CMakeFiles\OS11_HTAPI.dir\sources\Element.cpp.obj.d
   FLAGS = -g -std=gnu++17
-  OBJECT_DIR = CMakeFiles\OS10_STATIC.dir
-  OBJECT_FILE_DIR = CMakeFiles\OS10_STATIC.dir\sources
+  OBJECT_DIR = CMakeFiles\OS11_HTAPI.dir
+  OBJECT_FILE_DIR = CMakeFiles\OS11_HTAPI.dir\sources
+
+build CMakeFiles/OS11_HTAPI.dir/sources/HANDLE.cpp.obj: CXX_COMPILER__OS11_HTAPI_Debug D$:/GitHub/OS_SysDev/Lab11/OS11_HTAPI/sources/HANDLE.cpp || cmake_object_order_depends_target_OS11_HTAPI
+  DEFINES = -DOS11_HTAPI_EXPORTS
+  DEP_FILE = CMakeFiles\OS11_HTAPI.dir\sources\HANDLE.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles\OS11_HTAPI.dir
+  OBJECT_FILE_DIR = CMakeFiles\OS11_HTAPI.dir\sources
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target OS10_STATIC
+# Link build statements for SHARED_LIBRARY target OS11_HTAPI
 
 
 #############################################
-# Link the static library libOS10_STATIC.a
+# Link the shared library libOS11_HTAPI.dll
 
-build libOS10_STATIC.a: CXX_STATIC_LIBRARY_LINKER__OS10_STATIC_Debug CMakeFiles/OS10_STATIC.dir/sources/HANDLE.cpp.obj CMakeFiles/OS10_STATIC.dir/sources/Element.cpp.obj CMakeFiles/OS10_STATIC.dir/sources/CRUD.cpp.obj
+build libOS11_HTAPI.dll libOS11_HTAPI.dll.a: CXX_SHARED_LIBRARY_LINKER__OS11_HTAPI_Debug CMakeFiles/OS11_HTAPI.dir/main.cpp.obj CMakeFiles/OS11_HTAPI.dir/sources/CRUD.cpp.obj CMakeFiles/OS11_HTAPI.dir/sources/Element.cpp.obj CMakeFiles/OS11_HTAPI.dir/sources/HANDLE.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles\OS10_STATIC.dir
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\OS11_HTAPI.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = libOS10_STATIC.a
-  TARGET_PDB = OS10_STATIC.a.dbg
+  RESTAT = 1
+  TARGET_FILE = libOS11_HTAPI.dll
+  TARGET_IMPLIB = libOS11_HTAPI.dll.a
+  TARGET_PDB = OS11_HTAPI.dll.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D D:\GitHub\OS_SysDev\Lab10\OS10_STATIC\cmake-build-debug && C:\Users\Skvortsoff\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6777.58\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\GitHub\OS_SysDev\Lab11\OS11_HTAPI\cmake-build-debug && C:\Users\Skvortsoff\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6777.58\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -99,7 +112,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D D:\GitHub\OS_SysDev\Lab10\OS10_STATIC\cmake-build-debug && C:\Users\Skvortsoff\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6777.58\bin\cmake\win\bin\cmake.exe --regenerate-during-build -SD:\GitHub\OS_SysDev\Lab10\OS10_STATIC -BD:\GitHub\OS_SysDev\Lab10\OS10_STATIC\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D D:\GitHub\OS_SysDev\Lab11\OS11_HTAPI\cmake-build-debug && C:\Users\Skvortsoff\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6777.58\bin\cmake\win\bin\cmake.exe --regenerate-during-build -SD:\GitHub\OS_SysDev\Lab11\OS11_HTAPI -BD:\GitHub\OS_SysDev\Lab11\OS11_HTAPI\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -109,7 +122,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build OS10_STATIC: phony libOS10_STATIC.a
+build OS11_HTAPI: phony libOS11_HTAPI.dll
 
 # =============================================================================
 # Folder targets.
@@ -117,9 +130,9 @@ build OS10_STATIC: phony libOS10_STATIC.a
 # =============================================================================
 
 #############################################
-# Folder: D:/GitHub/OS_SysDev/Lab10/OS10_STATIC/cmake-build-debug
+# Folder: D:/GitHub/OS_SysDev/Lab11/OS11_HTAPI/cmake-build-debug
 
-build all: phony libOS10_STATIC.a
+build all: phony libOS11_HTAPI.dll
 
 # =============================================================================
 # Built-in targets

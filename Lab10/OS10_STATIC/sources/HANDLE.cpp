@@ -3,8 +3,8 @@
 //
 #include <iostream>
 #include <stdexcept>
-#include"HANDLE.h"
-#include "Element.h"
+#include"../headers/HANDLE.h"
+#include "../headers/Element.h"
 #include <string_view>
 #define EXTENSION_FILES ".th"
 #define PATH_BACKUPS "../backups/"
@@ -203,6 +203,8 @@ namespace HT {
             if(shared->capacity == 0)
                 throw std::runtime_error("Open -> Capacity is 0");
 
+            hthandle->file = file;
+            hthandle->fileMapping = fileMapping;
             hthandle->shared = shared;
             hthandle->address = (char *) map + sizeof(BetweenProcessMemory);
             hthandle->mutex = CreateMutex(nullptr, FALSE, "OS10");
@@ -221,8 +223,7 @@ namespace HT {
         hthandle->fixed = true;  // don't need to do snapshot, to fix the file
         if (!FlushViewOfFile(hthandle->shared, hthandle->shared->sizeMap))
         {
-            throw std::runtime_error("Close -> FlushViewOfFile -> error");
-            strcpy(hthandle->lastErrorMessage, (char *) "Element not found");
+            strcpy(hthandle->lastErrorMessage, (char *) "Close -> FlushViewOfFile -> error");
             return FALSE;
         }
 

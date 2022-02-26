@@ -8,7 +8,7 @@
 #include "headers/HANDLE.h"
 #include "headers/CRUD.h"
 #define SIZE_TEMP 128
-#define METHOD_OPEN_FILE
+//#define METHOD_OPEN_FILE
 
 int main(int argc, char *argv[]) {
     const CHAR *fileName = "../resources/test2.th";
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
         /// *************************************************
 #endif
         /// insert Element **********************************
-        for (int i = 1; i < 12; i++) {
+        /*for (int i = 1; i < 12; i++) {
             memset(temp, 0, SIZE_TEMP);
             strcat(temp, name);
             strcat(temp, std::to_string(i).c_str());
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
                 throw std::runtime_error("Error");
             else
                 std::cout << "Element inserted" << std::endl;
-        }
+        }*/
         /// *************************************************
 
         /// get Element *************************************
@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
         /// *************************************************
 
         /// update Element **********************************
-        test = HT::Update(hthandle, new HT::Element("2", 1, "TEST_1234", 9));
+        test = HT::Update(hthandle, new HT::Element("2", 1, "TEST_12345", 10));
 
         if(test == FALSE)
             throw std::runtime_error("Element not updated");

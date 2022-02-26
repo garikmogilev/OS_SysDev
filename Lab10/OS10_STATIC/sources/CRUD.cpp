@@ -3,8 +3,8 @@
 //
 #include <iostream>
 #include "windows.h"
-#include "HANDLE.h"
-#include "Element.h"
+#include "../headers/HANDLE.h"
+#include "../headers/Element.h"
 
 namespace HT{
 

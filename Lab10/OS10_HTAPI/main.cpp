@@ -8,7 +8,7 @@
 #include "D:\GitHub\OS_SysDev\Lab10\OS10_01\headers\CRUD.h"
 #include "D:\GitHub\OS_SysDev\Lab10\OS10_01\headers\HANDLE.h"
 #define SIZE_TEMP 128
-#define METHOD_OPEN_FILE
+//#define METHOD_OPEN_FILE
 
 int main(int argc, char *argv[]) {
     const CHAR *fileName = "test2.th";
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
         /// *************************************************
 #endif
         /// insert Element **********************************
-        for (int i = 1; i < 12; i++) {
+        for (int i = 13; i < 20; i++) {
             memset(temp, 0, SIZE_TEMP);
             strcat(temp, name);
             strcat(temp, std::to_string(i).c_str());
@@ -103,10 +103,14 @@ int main(int argc, char *argv[]) {
     {
         std::cerr << "runtime_error: " << error.what() << std::endl;
         std::cerr << HT::GetLastError(hthandle) << std::endl;
+        /// close file mapping *****************************
+        test = HT::Close(hthandle);
         if(test == FALSE)
             throw std::runtime_error("Error close mapping");
         else
             std::cout << "Close success" << std::endl;
+        /// ************************************************
+
     }
 }
 
